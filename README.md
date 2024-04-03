@@ -26,4 +26,4 @@ This visual representation helps in understanding the path found by each algorit
 - `Solving the Maze`: Passes the maze to the solvers with the specified method.
   - Uniform Cost Search: Invoked via `uniform_cost_search` method in the `UniformCostSearch` class.
   - A Search*: Invoked via `a_star_search` method in the `AStarSearch` class.
-- Visualization: Displays the solution paths for each algorithm.# artificial_intelligence_hw1
+- Visualization: Displays the solution paths for each algorithm.
