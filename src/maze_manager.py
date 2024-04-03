@@ -1,6 +1,6 @@
 from src.maze import Maze
 from src.maze_viz import Visualizer
-from src.solver import DepthFirstBacktracker
+from src.solver import DepthFirstBacktracker, UniformCostSearch, AStarSearch
 from src.solver import BiDirectional
 from src.solver import BreadthFirst
 
@@ -126,6 +126,13 @@ class MazeManager(object):
         elif method == "BreadthFirst":
             solver = BreadthFirst(maze, neighbor_method, self.quiet_mode)
             maze.solution_path = solver.solve()
+        elif method == "UniformCostSearch":
+            solver = UniformCostSearch(maze, neighbor_method, self.quiet_mode)
+            maze.solution_path = solver.uniform_cost_search()
+        elif method == "AStarSearch":
+            solver = AStarSearch(maze, neighbor_method, self.quiet_mode)
+            maze.solution_path = solver.a_star_search()
+
 
     def show_maze(self, id, cell_size=1):
         """Just show the generation animation and maze"""
@@ -148,6 +155,8 @@ class MazeManager(object):
             id (int): The id of the maze whose solution will be shown
             cell_size (int):
         """
+
+
         vis = Visualizer(self.get_maze(id), cell_size, self.media_name)
         vis.animate_maze_solution()
 

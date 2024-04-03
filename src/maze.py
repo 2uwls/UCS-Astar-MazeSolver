@@ -42,6 +42,7 @@ class Maze(object):
         self.solution_path = None
         self.initial_grid = self.generate_grid()
         self.grid = self.initial_grid
+        random.seed(1)
         self.generate_maze(algorithm, (0, 0))
 
     def generate_grid(self):
@@ -134,8 +135,9 @@ class Maze(object):
 
 
         """
+        neigh_list = list()
         if method == "fancy":
-            neigh_list = list()
+            #neigh_list = list()
             min_dist_to_target = 100000
 
             for k_n, l_n in neighbour_indices:
@@ -202,3 +204,31 @@ class Maze(object):
             depth_first_recursive_backtracker(self, start_coor)
         elif algorithm == "bin_tree":
             binary_tree(self, start_coor)
+
+    def get_cost(self, k_curr, l_curr, k_next, l_next):
+        """Calculate the cost of moving from the current cell to the next cell."""
+        # Assuming every vertical step costs 1.1 and every horizontal step costs 0.9
+        if k_curr == k_next:  # Horizontal movement
+            return 0.9
+        elif l_curr == l_next:  # Vertical movement
+            return 1.1
+        else:
+            # Diagonal movement (assuming it's allowed)
+            return max(0.9, 1.1)  # Return the maximum of the two costs
+
+    def set_solution(self, path):
+        """Set the found path and its cost in the maze object."""
+        if path is not None:
+            self.solution_path = path
+            self.solution_cost = self.calculate_cost(path)
+        else:
+            print("Warning: Attempted to set solution with None path.")
+
+    def calculate_cost(self, path):
+        """Calculate the total cost of the given path."""
+        total_cost = 0
+        for i in range(len(path) - 1):
+            k_curr, l_curr = path[i]
+            k_next, l_next = path[i + 1]
+            total_cost += self.get_cost(k_curr, l_curr, k_next, l_next)
+        return total_cost

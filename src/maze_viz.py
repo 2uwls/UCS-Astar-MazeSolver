@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 from matplotlib import animation
 import logging
 
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.INFO)
 
 
 class Visualizer(object):
@@ -264,6 +264,7 @@ class Visualizer(object):
         indicator = plt.Rectangle((self.maze.solution_path[0][0][0]*self.cell_size,
                                    self.maze.solution_path[0][0][1]*self.cell_size), self.cell_size, self.cell_size,
                                   fc="purple", alpha=0.6)
+
         self.ax.add_patch(indicator)
 
         self.add_path()
