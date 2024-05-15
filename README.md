@@ -27,3 +27,6 @@ This visual representation helps in understanding the path found by each algorit
   - Uniform Cost Search: Invoked via `uniform_cost_search` method in the `UniformCostSearch` class.
   - A Search*: Invoked via `a_star_search` method in the `AStarSearch` class.
 - Visualization: Displays the solution paths for each algorithm.
+
+### Performance and Execution Time Comparison of Two Algorithms
+<img width="537" alt="image" src="https://github.com/2uwls/UCS-Astar-MazeSolver/assets/101469780/74f9dd05-80fe-46b3-ad03-16ffc8047c26">
